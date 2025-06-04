@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tahunajaran', function (Blueprint $table) {
-            $table->id();
-            $table->string('tahun');
-            $table->boolean('nis_aktif')->default(false);
-            $table->timestamps();
+
+        Schema::create('tahun_ajaran', function (Blueprint $table) {
+          $table->id();
+          $table->string('tahun');
+          $table->boolean('is_aktif')->default(false);
+          $table->timestamps();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tahunajaran');
+        Schema::dropIfExists('tahun_ajaran');
     }
 };
