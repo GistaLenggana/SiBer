@@ -18,4 +18,10 @@ class Kategori extends Model
     ];
 
     public $timestamps = true;
+
+    public function pengaduan()
+{
+    return $this->hasMany(Pengaduan::class);
+}
+
 }
