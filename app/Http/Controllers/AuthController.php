@@ -23,6 +23,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+        // Sesuaikan dengan model dan tabel 'user'
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -35,7 +36,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau password salah',
+            'email' => 'Email atau password salah.',
         ]);
     }
 
@@ -50,9 +51,9 @@ class AuthController extends Controller
     {
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
-            'username' => 'required|string|max:100|unique:users,username',
+            'username' => 'required|string|max:100|unique:user,username',
             'nomor_wa' => 'required|numeric',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:user,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
@@ -62,16 +63,16 @@ class AuthController extends Controller
             'nomor_wa' => $request->nomor_wa,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'user', // default role
         ]);
 
-        return redirect('/login')->with('success', 'Akun berhasil dibuat, silakan login.');
+        return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');
     }
 
     // Logout
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
