@@ -5,6 +5,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RombelController;
+use App\Http\Controllers\RiwayatKelasController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,5 +57,15 @@ Route::prefix('rombel')->middleware('auth')->group(function () {
     Route::delete('/{id}', [RombelController::class, 'destroy'])->name('rombel.destroy');
 });
 
+
+Route::prefix('riwayat')->middleware('auth')->group(function () {
+    Route::get('/', [RiwayatKelasController::class, 'index'])->name('riwayat.index');
+    Route::get('/create', [RiwayatKelasController::class, 'create'])->name('riwayat.create');
+    Route::post('/', [RiwayatKelasController::class, 'store'])->name('riwayat.store');
+    Route::get('/{id}', [RiwayatKelasController::class, 'show'])->name('riwayat.show');
+    Route::get('/{id}/edit', [RiwayatKelasController::class, 'edit'])->name('riwayat.edit');
+    Route::put('/{id}', [RiwayatKelasController::class, 'update'])->name('riwayat.update');
+    Route::delete('/{id}', [RiwayatKelasController::class, 'destroy'])->name('riwayat.destroy');
+});
 
 
