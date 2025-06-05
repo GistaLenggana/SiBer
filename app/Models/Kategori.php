@@ -5,23 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TahunAjaran extends Model
+class Kategori extends Model
 {
     use HasFactory;
 
-    protected $table = 'tahun_ajaran'; // nama tabel
+    // Menyesuaikan nama tabel (karena bukan 'kategoris')
+    protected $table = 'kategori';
 
+    // Kolom yang bisa diisi secara massal
     protected $fillable = [
-        'tahun',
-        'is_aktif',
+        'nama_kategori',
     ];
 
     public $timestamps = true;
-
-    public function rombel()
-{
-    return $this->hasMany(Rombel::class);
-}
-
-
 }
