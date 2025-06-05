@@ -25,4 +25,10 @@ class Rombel extends Model
     {
         return $this->belongsTo(TahunAjaran::class);
     }
+
+    public function riwayatKelas()
+    {
+       return $this->hasMany(RiwayatKelas::class);
+    }
+
 }

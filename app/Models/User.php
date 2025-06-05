@@ -28,4 +28,10 @@ class User extends Authenticatable
     ];
 
     public $timestamps = true;
+    
+    public function riwayatKelas()
+{
+    return $this->hasMany(RiwayatKelas::class);
+}
+
 }
